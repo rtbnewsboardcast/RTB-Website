@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTB | Roblox Television Broadcast</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* The Alert/Pop-up Bar */
+        .alert-bar {
+            background-color: #d32f2f; /* Red for urgency */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 2px solid #f0f0f0;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #000;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: #fafafa;
+        }
+
+        .hero h1 { margin: 0; font-size: 3rem; }
+        .hero p { color: #666; font-size: 1.2rem; }
+
+        /* Content Sections */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            border-left: 5px solid #000;
+            padding-left: 15px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Show Cards */
+        .show-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .show-card {
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .show-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .show-time {
+            color: #d32f2f;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .warning-note {
+            font-size: 0.85em;
+            color: #888;
+            font-style: italic;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Concert Section */
+        .concert-box {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .concert-box a { color: #00d4ff; }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="alert-bar">
+        NOTICE: Some shows may experience delays reaching YouTube today.
+    </div>
+
+    <header>
+        <div class="logo">RTB</div>
+        <nav>HOME | SHOWS | ABOUT</nav>
+    </header>
+
+    <section class="hero">
+        <h1>Roblox Television Broadcast</h1>
+        <p>Your premier source for Metaverse entertainment.</p>
+    </section>
+
+    <div class="container">
+        
+        <h2>Our Shows</h2>
+        <div class="show-grid">
+            
+            <div class="show-card">
+                <h3>Good Morning Roblox</h3>
+                <span class="show-time">7AM Mon, Wed & Fri</span>
+                <p>Start your day with the latest updates from the Roblox world.</p>
+                <span class="warning-note">Due to technical issues, some episodes may not reach YouTube.</span>
+            </div>
+
+            <div class="show-card">
+                <h3>LBloxia</h3>
+                <span class="show-time">9AM EST Tue & Thurs</span>
+                <p>Hosted by Charlotte. Diving deep into the world of show biz and celebrity news.</p>
+                <span class="warning-note">Due to technical issues, some episodes may not reach YouTube.</span>
+            </div>
+
+            <div class="show-card">
+                <h3>Quick News</h3>
+                <span class="show-time">Live 4PM - 4:30PM UTC</span>
+                <p>The fastest news updates in the metaverse, ready when you are.</p>
+                <span class="warning-note">May experience occasional technical difficulties.</span>
+            </div>
+
+        </div>
+
+        <div class="concert-box">
+            <h2>Our Concert Shows</h2>
+            <p>We aim to bring you the best live performances. Most of our current concerts are produced by <strong>KB</strong>.</p>
+            <p>Join their community: <a href="#">.gg/kbprodc</a> or follow <strong>@kbprodc</strong> on TikTok.</p>
+            <p><em>We are planning to expand our concert roster slowly but surely!</em></p>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2024 RTB - Roblox Television Broadcast
+    </footer>
+
+</body>
+</html>
