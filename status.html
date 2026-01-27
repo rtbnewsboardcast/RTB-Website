@@ -147,12 +147,6 @@
             </div>
         </div>
             
-    <div class="component-item">
-                <span class="component-name">Age Check</span>
-                <span class="status-label"><span class="dot dot-green"></span>Online</span>
-            </div>
-        </div>
-
     <div class="legend">
             <span class="dot dot-red"></span> Cancelled &nbsp; 
             <span class="dot dot-blue"></span> Maintenance &nbsp; 
@@ -164,38 +158,9 @@
         &copy; 2025 RTB - Roblox Television Broadcast
     </footer>
 
-<div id="age-gate" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; align-items: center; justify-content: center; text-align: center;">
-    <div style="max-width: 400px; padding: 40px; border: 1px solid #d0d7de; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.1);">
-        <h2 style="margin-top: 0;">Age Verification</h2>
-        <p>This mandatory due to the UK Laws we have to apply with, none of our content is over +18 its just the new we say in our shows are more older audinces esspecially with politcs and crime scene news.</p>
-        <p style="font-weight: bold; color: #cf222e;">Are you 13 or older?</p>
-        <button onclick="verifyAge()" style="background: #2da44e; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 16px; margin-right: 10px;">Yes, I am 13+</button>
-        <button onclick="failedAge()" style="background: white; color: #636c76; border: 1px solid #d0d7de; padding: 12px 24px; border-radius: 6px; cursor: pointer;">No</button>
-    </div>
-</div>
-
-<script>
-    // Check if user has already verified
-    window.onload = function() {
-        if (localStorage.getItem("rtb-verified") === "true") {
-            document.getElementById("age-gate").style.display = "none";
-        }
-    }
-
-    function verifyAge() {
-        // Save verification to browser storage
-        localStorage.setItem("rtb-verified", "true");
-        document.getElementById("age-gate").style.display = "none";
-    }
-
-    function failedAge() {
-        alert("Sorry, you must be 13 or older to view RTB content.");
-        window.location.href = "https://www.roblox.com"; // Sends them away
-    }
-</script>
-
 </body>
 </html>
+
 
 
 
