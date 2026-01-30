@@ -3,118 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RTB+ | Premium Broadcasting</title>
+    <title>RTB+ | Premium</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a; /* Dark premium blue background */
-            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #1f2328;
             margin: 0;
             padding: 0;
         }
 
         header {
-            background-color: #1e293b;
             padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 3px solid #f59e0b; /* RTB+ Orange/Gold accent */
+            border-bottom: 1px solid #eaecef;
         }
 
-        .logo-text { font-size: 24px; font-weight: bold; color: #f59e0b; }
-        .plus-badge { background: #f59e0b; color: #1e293b; padding: 2px 8px; border-radius: 4px; margin-left: 5px; }
+        .logo-text { font-size: 22px; font-weight: 800; color: #000; letter-spacing: -1px; }
+        .plus-badge { color: #f59e0b; margin-left: 2px; }
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
 
-        .hero-desc {
-            background: rgba(30, 41, 59, 0.8);
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            border-left: 5px solid #f59e0b;
+        .intro-text {
+            font-size: 15px;
+            color: #57606a;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            border-left: 2px solid #f59e0b;
+            padding-left: 20px;
         }
 
-        h2 { border-bottom: 2px solid #334155; padding-bottom: 10px; margin-top: 40px; }
+        h2 { font-size: 20px; margin-bottom: 20px; color: #24292f; }
 
-        /* Video Grid Layout */
-        .video-wrapper {
+        /* THE GRADIENT OUTLINE STYLE */
+        .video-card {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
+            padding: 3px; /* This controls the thickness of the border */
+            background: linear-gradient(45deg, #f59e0b, #ef4444, #ec4899); /* Logo Colors */
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .video-inner {
+            background: white;
+            border-radius: 10px;
             overflow: hidden;
-            border-radius: 8px;
-            background: #000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .video-wrapper iframe {
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-container iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
         }
 
+        /* GRID FOR STREAMS 3, 4, 5 */
         .stream-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 20px;
         }
 
-        .stream-card { background: #1e293b; padding: 15px; border-radius: 8px; }
-        .stream-card h3 { margin-top: 10px; font-size: 18px; color: #cbd5e1; }
+        .label {
+            padding: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            background: #fafafa;
+            border-top: 1px solid #eaecef;
+        }
 
-        footer { text-align: center; padding: 40px; color: #64748b; font-size: 14px; }
-        nav a { color: #f59e0b; text-decoration: none; font-weight: bold; }
+        nav a { text-decoration: none; color: #0969da; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-text">RTB<span class="plus-badge">+</span></div>
-        <nav><a href="index.html">Back to RTB Home</a></nav>
+        <nav><a href="index.html">Back to Home</a></nav>
     </header>
 
     <div class="container">
-        <div class="hero-desc">
-            <h1>Welcome to RTB+</h1>
-            <p style="font-size: 1.2rem; line-height: 1.6;">
-                RTB... or Better... Welcome to our new service called <strong>RTB+</strong>. 
-                All concert and quick news will be filmed here, while Daytime Shows continue on the standard RTB network. 
-                Experience higher quality, combined feeds, and 24/7 coverage.
-            </p>
+        <div class="intro-text">
+            <strong>RTB... or Better...</strong> Welcome to our new service called <strong>RTB+</strong>. 
+            All concert and quick news will be filmed here, while Daytime Shows continue on the standard RTB network.
         </div>
 
-        <h2>Main Stage: Quick News & Specials</h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw" frameborder="0" allowfullscreen></iframe>
+        <h2>Live Now on RTB+</h2>
+        
+        <div class="video-card">
+            <div class="video-inner">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw"></iframe>
+                </div>
+                <div class="label">Quick News Special / Concert Feed</div>
+            </div>
         </div>
 
-        <h2>RTB+ Combined Multistream</h2>
-        <p>Catch all secondary broadcasts, live events, and behind-the-scenes in one place.</p>
+        <h2>RTB+ Multistream (3, 4 & 5 Combined)</h2>
         <div class="stream-grid">
-            <div class="stream-card">
-                <div class="video-wrapper" style="padding-bottom: 60%;">
-                    <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw" frameborder="0" allowfullscreen></iframe>
+            <div class="video-card">
+                <div class="video-inner">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw"></iframe>
+                    </div>
+                    <div class="label">RTB+ Stream 3</div>
                 </div>
-                <h3>RTB+ Stream 3</h3>
             </div>
-            <div class="stream-card">
-                <div class="video-wrapper" style="padding-bottom: 60%;">
-                    <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw" frameborder="0" allowfullscreen></iframe>
+
+            <div class="video-card">
+                <div class="video-inner">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw"></iframe>
+                    </div>
+                    <div class="label">RTB+ Stream 4</div>
                 </div>
-                <h3>RTB+ Stream 4</h3>
             </div>
-            <div class="stream-card">
-                <div class="video-wrapper" style="padding-bottom: 60%;">
-                    <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw" frameborder="0" allowfullscreen></iframe>
+
+            <div class="video-card">
+                <div class="video-inner">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/live_stream?channel=UCkXlB3I96W5YmX9jS_D-Pjw"></iframe>
+                    </div>
+                    <div class="label">RTB+ Stream 5</div>
                 </div>
-                <h3>RTB+ Stream 5</h3>
             </div>
         </div>
-    </div>
 
-    <footer>
-        &copy; 2025 RTB - Roblox Television Broadcast | Powered by RTB+
-    </footer>
+        <footer style="margin-top: 60px; text-align: center; color: #8c959f; font-size: 12px; border-top: 1px solid #eaecef; padding: 20px;">
+            © 2025 RTB - Roblox Television Broadcast | Powered by RTB+
+        </footer>
+    </div>
 
 </body>
 </html>
