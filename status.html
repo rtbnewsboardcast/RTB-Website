@@ -1,184 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RTB | System Status</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            color: #1f2328;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Header Match */
-        header {
-            border-bottom: 1px solid #d0d7de;
-            padding: 15px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo { font-weight: 600; font-size: 20px; text-decoration: none; color: black; }
-
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* Overall Status Box */
-        .overall-status {
-            padding: 20px;
-            border-radius: 6px;
-            margin-bottom: 30px;
-            font-weight: 600;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        /* Status Colors */
-        .status-on-schedule { background-color: #dafbe1; color: #1a7f37; border: 1px solid #1a7f37; } /* Green */
-        .status-maintenance { background-color: #ddf4ff; color: #0969da; border: 1px solid #0969da; } /* Blue */
-        .status-cancelled { background-color: #ffebe9; color: #cf222e; border: 1px solid #cf222e; }   /* Red */
-        .status-rescheduled { background-color: #fff8c5; color: #9a6700; border: 1px solid #9a6700; } /* Orange */
-        .status-offline { background-color: #333; color: white; border: 1px solid #000; }             /* Dark Red/Black */
-
-        /* Components List */
-        .component-list {
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
-        }
-
-        .component-item {
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #d0d7de;
-        }
-
-        .component-item:last-child { border-bottom: none; }
-
-        .component-name { font-weight: 500; }
-
-        .status-label {
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        /* Color Circles */
-        .dot {
-            height: 10px;
-            width: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        .dot-green { background-color: #2da44e; }
-        .dot-blue { background-color: #0969da; }
-        .dot-red { background-color: #cf222e; }
-        .dot-orange { background-color: #d4a72c; }
-        .dot-darkred { background-color: #8b0000; }
-
-        .legend {
-            margin-top: 30px;
-            font-size: 12px;
-            color: #636c76;
-            text-align: center;
-        }
-
-        nav a { text-decoration: none; color: #0969da; margin-left: 15px; font-weight: 500; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <a href="index.html" class="logo">RTB STATUS</a>
-        <nav>
-            <a href="index.html">Back to Home</a>
-        </nav>
-    </header>
-
-    <div class="container">
-      <div class="overall-status status-on-schedule">
-    All Operational
-</div>
-<div class="container">
-
-<div style="text-align: center; margin-bottom: 20px;">
-    <div style="
-        display: inline-block; 
-        background-color: #ddf4ff; 
-        color: #0969da; 
-        border: 1px solid #1a7f37; 
-        padding: 4px 12px; 
-        border-radius: 4px; 
-        font-weight: 600; 
-        font-size: 13px;
-        font-family: sans-serif;">
-        All Online
+<div id="rtb-status-container">
+    <div style="text-align: center; padding: 20px; font-family: sans-serif; color: #666;">
+        Checking RTB+ Systems...
     </div>
 </div>
 
-    <div class="component-list">
-        ...
+<script>
+async function updateRTBStatus() {
+    const container = document.getElementById('rtb-status-container');
+    const url = "https://statuspage.incident.io/robloxbroadcastingservice/api/widget";
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
         
-          <div class="component-list">
-            <div class="component-item">
-                <span class="component-name">Good Morning Roblox</span>
-                <span class="status-label"><span class="dot dot-green"></span>On-Schedule</span>
-            </div>
+        let statusText = "All Operational";
+        let bgColor = "#dafbe1"; // Pastel Green
+        let textColor = "#1a7f37";
+        let borderColor = "#1a7f37";
 
-            <div class="component-item">
-                <span class="component-name">Quick News</span>
-                <span class="status-label"><span class="dot dot-green"></span>On Schedule</span>
-            </div>
+        // Check for active incidents
+        if (data.ongoing_incidents.length > 0) {
+            const incident = data.ongoing_incidents[0];
+            statusText = `Investigating: ${incident.name}`;
+            bgColor = "#FFF3BF"; // Pastel Orange
+            textColor = "#9a6700";
+            borderColor = "#9a6700";
+        } 
+        // Check for maintenance
+        else if (data.in_progress_maintenances.length > 0) {
+            statusText = "Scheduled Maintenance in Progress";
+            bgColor = "#e1f5fe"; // Pastel Blue
+            textColor = "#0288d1";
+            borderColor = "#0288d1";
+        }
 
-            <div class="component-item">
-                <span class="component-name">LBloxia</span>
-                <span class="status-label"><span class="dot dot-green"></span>On-Scheduled</span>
+        container.innerHTML = `
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="display: inline-block; background-color: ${bgColor}; color: ${textColor}; 
+                            border: 1px solid ${borderColor}; padding: 6px 16px; border-radius: 6px; 
+                            font-weight: 600; font-size: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    ${statusText}
+                </div>
             </div>
+        `;
+    } catch (error) {
+        console.error("Status load failed", error);
+        container.innerHTML = ""; // Hide if it fails
+    }
+}
 
-            <div class="component-item">
-                <span class="component-name">Our Services</span>
-                <span class="status-label"><span class="dot dot-green"></span>Online</span>
-            </div>
-
-            <div class="component-item">
-                <span class="component-name">Our Webpage</span>
-                <span class="status-label"><span class="dot dot-green"></span>Online</span>
-            </div>
-
-            <div class="component-item">
-                <span class="component-name">Our Youtube</span>
-                <span class="status-label"><span class="dot dot-green"></span>Online</span>
-            </div>
-        </div>
-
-         <div class="component-item">
-                <span class="component-name">Our Live Show</span>
-                <span class="status-label"><span class="dot dot-green"></span>On Schdeule</span>
-            </div>
-        </div>
-            
-    <div class="legend">
-            <span class="dot dot-red"></span> Cancelled &nbsp; 
-            <span class="dot dot-blue"></span> Maintenance &nbsp; 
-            <span class="dot dot-green"></span> On Schedule &nbsp; 
-            <span class="dot dot-orange"></span> Re-Scheduled &nbsp; 
-            <span class="dot dot-darkred"></span> Offline
-        </div>
-    </div> <footer style="text-align: center; padding: 40px 20px; color: #636c76; font-size: 14px; border-top: 1px solid #d0d7de; margin-top: 50px;">
-        &copy; 2025 RTB - Roblox Television Broadcast
-    </footer>
-
-</body>
-</html>
+updateRTBStatus();
+</script>
 
 
 
