@@ -190,10 +190,48 @@
             <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/0ylSzZB9" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
-</div>
-    
-   
+<div id="status-popup" style="display: none; position: fixed; bottom: 20px; right: 20px; width: 320px; background: white; border-left: 5px solid #ef4444; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border-radius: 8px; z-index: 9999; font-family: sans-serif; animation: slideIn 0.5s ease-out;">
+    <div style="padding: 15px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="color: #ef4444; font-weight: bold; font-size: 14px;">⚠️ LIVE INCIDENT</span>
+            <button onclick="document.getElementById('status-popup').style.display='none'" style="border: none; background: none; cursor: pointer; color: #999; font-size: 18px;">&times;</button>
+        </div>
+        <div id="incident-name" style="font-weight: 600; font-size: 15px; color: #1f2328; margin-bottom: 5px;">Detecting issues...</div>
+        <a id="incident-link" href="#" target="_blank" style="color: #0969da; font-size: 13px; text-decoration: none; font-weight: 500;">View Status Page →</a>
     </div>
+</div>
+
+<style>
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+</style>
+
+<script>
+async function checkIncidents() {
+    try {
+        // We use a proxy service to bypass the "Blank Page" CORS error
+        const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://statuspage.incident.io/robloxbroadcastingservice/api/widget'));
+        const wrapper = await response.json();
+        const data = JSON.parse(wrapper.contents);
+
+        if (data.ongoing_incidents && data.ongoing_incidents.length > 0) {
+            const incident = data.ongoing_incidents[0];
+            
+            // Show the popup and fill in the details
+            document.getElementById('status-popup').style.display = 'block';
+            document.getElementById('incident-name').innerText = incident.name;
+            document.getElementById('incident-link').href = incident.url;
+        }
+    } catch (error) {
+        console.log("Status check skipped.");
+    }
+}
+
+// Check for incidents when the page loads
+checkIncidents();
+</script>
 
     <footer>
         &copy; 2025 RTB - Roblox Television Broadcast
@@ -201,6 +239,7 @@
 
 </body>
 </html>
+
 
 
 
