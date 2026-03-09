@@ -10,7 +10,7 @@
             padding: 0;
             height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #000000; /* Jet Black */
+            background-color: #000000;
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -19,7 +19,6 @@
             text-align: center;
         }
 
-        /* The Smoky Purple Gradient Header */
         header {
             width: 100%;
             padding: 100px 0 50px 0;
@@ -31,18 +30,16 @@
             letter-spacing: 4px;
             text-transform: uppercase;
             margin: 0;
-            /* Subtle glow for the smoky vibe */
             text-shadow: 0 0 20px rgba(102, 51, 153, 0.6);
         }
 
-        /* Navigation Links */
         .links {
             margin-top: 40px;
         }
 
         .links a {
             display: block;
-            color: #b39ddb; /* Light smoky purple */
+            color: #b39ddb;
             text-decoration: none;
             font-size: 1.2rem;
             margin: 15px 0;
@@ -54,17 +51,26 @@
             text-shadow: 0 0 10px #6a1b9a;
         }
 
-        /* Footer */
+        /* Styling for the Status Badge */
+        .status-badge {
+            margin-top: 30px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .status-badge:hover {
+            opacity: 1;
+        }
+
         footer {
             margin-top: auto;
-            padding-bottom: 30px;
+            padding: 40px 0;
             font-size: 0.9rem;
             opacity: 0.6;
         }
     </style>
 </head>
 <body>
-[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v3/monitor/2gz0x.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+
     <header>
         <h1>This Summer</h1>
     </header>
@@ -74,8 +80,14 @@
         <a href="https://x.com/MeadwridgeRP" target="_blank">Follow on X</a>
     </div>
 
+    <div class="status-badge">
+        <a href="https://blackeyeent.betteruptime.com/" target="_blank">
+            <img src="https://uptime.betterstack.com/status-badges/v3/monitor/2gz0x.svg" alt="Better Stack Badge" />
+        </a>
+    </div>
+
     <footer>
-        Black Eye Entertainment &copy; 2026-2027
+        Meadowridge RP &copy; 2026
     </footer>
 
 </body>
